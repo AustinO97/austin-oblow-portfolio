@@ -1,20 +1,21 @@
 "use client";
-
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
 import {
   Select,
   SelectContent,
   SelectGroup,
-  SelectItem,
   SelectLabel,
   SelectTrigger,
   SelectValue,
+  SelectItem,
 } from "@/components/ui/select";
 
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
+import React from "react";
 
 const info = [
   {
@@ -29,9 +30,23 @@ const info = [
   },
 ];
 
-import { motion } from "framer-motion";
-
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSelectChange = (value) => {
+    setFormData({ ...formData, service: value });
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -50,29 +65,76 @@ const Contact = () => {
                 Let&apos;s work together
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  name="firstname"
+                  type="text"
+                  placeholder="Firstname"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="lastname"
+                  type="text"
+                  placeholder="Lastname"
+                  value={formData.lastname}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Email address"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="phone"
+                  type="tel"
+                  placeholder="Phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
               </div>
-              <Select>
+              <Select onValueChange={handleSelectChange}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectLabel value="est">Web Development</SelectLabel>
-                    <SelectLabel value="cst">Logo Design</SelectLabel>
-                    {/* 2:50:48 */}
+                    <SelectItem value="Web Development">
+                      Web Development
+                    </SelectItem>
+                    <SelectItem value="Logo Design">Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
+              <Textarea
+                className="h-[200px]"
+                placeholder="Type your message here."
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+              />
+              <Button size="md" className="max-w-40">
+                Send message
+              </Button>
             </form>
           </div>
           {/* info */}
           <div className="flex-1 items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
-            info
+            <ul className="flex flex-col gap-8">
+              {info.map((item, index) => (
+                <li key={index} className="flex items-center gap-6">
+                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-cyan-300 rounded-md flex items-center">
+                    <div className="text-[28px] m-3">{item.icon}</div>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-white/60">{item.label}</p>
+                    <h3 className="text-xl">{item.value}</h3>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
