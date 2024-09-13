@@ -1,25 +1,31 @@
-import { Link } from "lucide-react"
-import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter } from "react-icons/fa"
+import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter } from "react-icons/fa";
 
 const socials = [
-  {icon: <FaGithub />, path: ''},
-  {icon: <FaLinkedinIn />, path: ''},
-  {icon: <FaYoutube />, path: ''},
-  {icon: <FaTwitter />, path: ''},
-]
+  { icon: <FaGithub />, path: "https://github.com/AustinO97" },
+  {
+    icon: <FaLinkedinIn />,
+    path: "https://www.linkedin.com/in/austin-oblow-526b04240/",
+  },
+];
 
 const Social = ({ containerStyles, iconStyles }) => {
   return (
     <div className={containerStyles}>
       {socials.map((item, index) => {
         return (
-          <Link key={index} href={item.path} className={iconStyles}>
+          <a
+            key={index}
+            href={item.path}
+            className={iconStyles}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {item.icon}
-          </Link>
-        )
+          </a>
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Social
+export default Social;

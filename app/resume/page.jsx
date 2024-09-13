@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  FaHtml5,
-  FaCss3,
-  FaJs,
-  FaReact,
-  FaFigma,
-  FaNodeJs,
-} from "react-icons/fa";
+import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa";
 
 import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 
@@ -51,7 +44,7 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "Flatiron School",
   description:
-    "Worked on various projects, including a blog platform, a travel booking app, and a running shoe app. I'm currently focusing on building a new websites using Next.js and Tailwind CSS.",
+    "I worked on various projects, including a blog platform, a travel booking app, and a running shoe app. I'm currently focusing on building new websites using Next.js and Tailwind CSS.",
   items: [
     {
       institution: "Flatiron School",
@@ -103,7 +96,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Resume = () => {
   return (
@@ -167,7 +160,7 @@ const Resume = () => {
                           key={index}
                           className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                         >
-                          <span className="text-cyan-300">
+                          <span className="text-yellow-200">
                             {item.institution}
                           </span>
                           <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
@@ -195,7 +188,7 @@ const Resume = () => {
                         <TooltipProvider delayDuration={100}>
                           <Tooltip className="bg-[#232329] text-white/60 p-4 rounded-lg">
                             <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl group-hover:text-cyan-300 transition-all duration-300">
+                              <div className="text-6xl group-hover:text-[#4F75FF] transition-all duration-300">
                                 {skill.icon}
                               </div>
                             </TooltipTrigger>
