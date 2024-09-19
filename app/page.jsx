@@ -21,14 +21,22 @@ const Home = () => {
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2"
+              <a
+                href="https://docs.google.com/document/d/1B9yPdz_bCAREbQ8RrE6xxyXEKM4oT7bLWasLK5xbUTc/export?format=pdf
+"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
               >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>Download Resume</span>
+                  <FiDownload className="text-xl" />
+                </Button>
+              </a>
               <div className="mb-8 xl:mb-0">
                 <Social
                   containerStyles="flex gap-6"
